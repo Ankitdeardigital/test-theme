@@ -1,3 +1,23 @@
+{%- style -%}
+  .main-body {
+    text-align: center;
+    padding: 20px;
+    background-color: #e47474;
+    border: 1px solid #e5e5e5;
+    margin-top: 20px;
+  }
+  .main-body h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .main-body div {
+    margin-bottom: 20px;
+  }
+  .main-body div:last-child {
+    margin-bottom: 0;
+  }
+{%- endstyle -%}
+<div class="main-body">
 <h2>{{ section.settings.title }}</h2>
 
 {% for block in section.blocks %}
@@ -12,7 +32,7 @@
       </div>
   {% endcase %}
 {% endfor %}
-
+</div>
 {% schema %}
   {
     "name": "demo",
