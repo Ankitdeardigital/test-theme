@@ -100,6 +100,9 @@
                     </h2>
                   </a>
                 </div>
+                {%- if product.metafields.custom.prod_title != blank -%}
+                  <p>{{ product.metafields.custom.prod_title }}</p>
+                {%- endif -%}
               {%- when 'price' -%}
                 <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
