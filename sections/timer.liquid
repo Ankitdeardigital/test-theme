@@ -1,0 +1,53 @@
+
+<style>
+    .live-time-date-section {
+      text-align: center;
+      padding: 20px;
+      background-color: #6fb7ff;
+      border-radius: 5px;
+      margin: 10px;
+    }
+    #live-time {
+      font-size: 24px;
+      color: #333;
+    }
+    #live-date {
+      font-size: 18px;
+      color: #666;
+    }
+  </style>
+
+<div class="live-time-date-section">
+    <p id="live-time"></p>
+    <p id="live-date"></p>
+</div>
+  
+  <script>
+  function updateLiveDateTime() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const dateStr = now.toLocaleDateString('en-US', dateOptions);
+    document.getElementById('live-time').textContent = `${hours}:${minutes}:${seconds}`;
+    document.getElementById('live-date').textContent = `${dateStr}`;
+  }
+  
+  setInterval(updateLiveDateTime, 1000); // Update every second
+  updateLiveDateTime(); // Initial update
+  </script>
+{% schema %}
+{
+  "name": "Live Time and Date",
+  "settings": [],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Live Time and Date Section",
+      "category": "custom"
+    }
+  ]
+}
+{% endschema %}
+
