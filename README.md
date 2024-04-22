@@ -1,1 +1,1 @@
-This is testing repo used on testing branch.
+This is testing repo used on testing store.
