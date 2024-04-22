@@ -73,13 +73,13 @@
         "liquid_zrQJfi": {
           "type": "liquid",
           "settings": {
-            "liquid": "dfdsdfdf"
+            "liquid": "first sentcene is title"
           }
         },
         "custom_text_M8ypYX": {
           "type": "custom-text",
           "settings": {
-            "custom-text-field": "dsklfklsalk"
+            "custom-text-field": "second sentence is text."
           }
         }
       },
