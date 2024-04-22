@@ -69,6 +69,24 @@
     },
     "demo_aH6NxE": {
       "type": "demo",
+      "blocks": {
+        "liquid_zrQJfi": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "dfdsdfdf"
+          }
+        },
+        "custom_text_M8ypYX": {
+          "type": "custom-text",
+          "settings": {
+            "custom-text-field": "dsklfklsalk"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_zrQJfi",
+        "custom_text_M8ypYX"
+      ],
       "settings": {
         "title": "Title"
       }
