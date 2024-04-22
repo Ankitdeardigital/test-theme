@@ -53,7 +53,7 @@
         "custom_liquid_aeLVMx": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% if product.metafields.custom.prod_title != blank %}\n  <p>Made in {{ product.metafields.custom.prod_title }}<\/p>\n{% endif %}"
+            "custom_liquid": "{% if product.metafields.custom.prod_title != blank %}\n  <p>uswd for in {{ product.metafields.custom.prod_title }}<\/p>\n{% endif %}"
           }
         }
       },
@@ -105,7 +105,7 @@
     "custom_liquid_fTbUET": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "{% if product.metafields.custom.prod_title != blank %}\n  <p>Made in {{ product.metafields.custom.prod_title }}<\/p>\n{% endif %}",
+        "custom_liquid": "{% if product.metafields.custom.prod_title != blank %}\n  <p>used for{{ product.metafields.custom.prod_title }}<\/p>\n{% endif %}",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 52
