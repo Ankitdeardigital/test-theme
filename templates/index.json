@@ -90,11 +90,17 @@
       "settings": {
         "title": "Title"
       }
+    },
+    "timer_wPAtpt": {
+      "type": "timer",
+      "settings": {
+      }
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
-    "demo_aH6NxE"
+    "demo_aH6NxE",
+    "timer_wPAtpt"
   ]
 }
