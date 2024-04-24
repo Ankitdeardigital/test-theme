@@ -97,12 +97,31 @@
       "settings": {
         "title": "Title"
       }
+    },
+    "video_section_XKJGAG": {
+      "type": "video-section",
+      "blocks": {
+        "external_video_ndqUpD": {
+          "type": "external-video",
+          "settings": {
+            "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "description": "Add video"
+          }
+        }
+      },
+      "block_order": [
+        "external_video_ndqUpD"
+      ],
+      "settings": {
+        "heading": "Title"
+      }
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
     "timer_wPAtpt",
-    "demo_aH6NxE"
+    "demo_aH6NxE",
+    "video_section_XKJGAG"
   ]
 }

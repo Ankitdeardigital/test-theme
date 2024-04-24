@@ -1,0 +1,42 @@
+.video-section {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 50px 0; /* Increase the top and bottom padding */
+}
+
+.video-section h2 {
+    margin-bottom: 20px;
+}
+
+.stored-video,
+.external-video {
+    margin-bottom: 20px;
+}
+
+.stored-video img,
+.external-video iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.external-video iframe {
+    width: 100%;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .video-section {
+        padding: 30px 0; /* Adjusted padding for smaller screens */
+    }
+
+    .stored-video,
+    .external-video {
+        margin-bottom: 10px;
+    }
+
+    .video-section h2 {
+        font-size: 1.5rem;
+    }
+}
