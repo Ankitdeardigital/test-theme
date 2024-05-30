@@ -46,6 +46,7 @@
         "column_pbibk7",
         "column_iWQUnd"
       ],
+      "disabled": true,
       "settings": {
         "title": "Multicolumn",
         "heading_size": "h1",
