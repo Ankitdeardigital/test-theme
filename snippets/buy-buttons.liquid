@@ -60,7 +60,7 @@
           {% endif %}
           class="product-variant-id"
         >
-         <input type="hidden" name="properties[_item_list_name]" data-collection-list="{{ product.collections | json }}" value="{{ product.collections | json }}">
+         <input type="hidden" name="properties[_item_list_name]" data-collection-list="{{ product.collections | json }}" value='{{ product.collections | json }}'>
 
         {%- if gift_card_recipient_feature_active -%}
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
