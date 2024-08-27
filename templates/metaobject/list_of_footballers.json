@@ -17,7 +17,7 @@
           "repeater": "{{ metaobject.list_of_footballers.value }}",
           "settings": {
             "image": "{{ block.repeater.image_opf_the_author.value }}",
-            "title": "{{ block.repeater.website_link | metafield_tag }}",
+            "title": "{{ block.repeater.website_link | metafield_tag }}{{ block.repeater.author_name.value }}",
             "text": "<p>{{ block.repeater.events_of_author | metafield_tag }}<\/p>",
             "link_label": "{{ block.repeater.author_name.value }}",
             "link": ""
