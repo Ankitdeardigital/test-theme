@@ -52,15 +52,6 @@
     "multicolumn_q8mmra": {
       "type": "multicolumn",
       "blocks": {
-        "column_9wrJU4": {
-          "type": "column",
-          "settings": {
-            "title": "Text Mastery: Unleash the Power of Gerante!",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
         "column_tm468z": {
           "type": "column",
           "settings": {
@@ -99,7 +90,6 @@
         }
       },
       "block_order": [
-        "column_9wrJU4",
         "column_tm468z",
         "column_i3yC7b",
         "column_pbibk7",
