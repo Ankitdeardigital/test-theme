@@ -9,8 +9,43 @@
 */
 {
   "sections": {
+    "multicolumn_eJMkJY": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_dWX398": {
+          "type": "column",
+          "repeater": "{{ metaobject.list_of_footballers.value }}",
+          "settings": {
+            "image": "{{ block.repeater.image_opf_the_author.value }}",
+            "title": "{{ block.repeater.website_link | metafield_tag }}",
+            "text": "{{ block.repeater.events_of_author | metafield_tag }}",
+            "link_label": "{{ block.repeater.author_name.value }}",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_dWX398"
+      ],
+      "settings": {
+        "title": "Multicolumn",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "Button label",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
   },
   "order": [
-
+    "multicolumn_eJMkJY"
   ]
 }
