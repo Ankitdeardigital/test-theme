@@ -18,14 +18,36 @@
           "settings": {
             "image": "{{ block.repeater.image_opf_the_author.value }}",
             "title": "{{ block.repeater.website_link | metafield_tag }}",
-            "text": "{{ block.repeater.events_of_author | metafield_tag }}",
+            "text": "<p>{{ block.repeater.events_of_author | metafield_tag }}<\/p>",
             "link_label": "{{ block.repeater.author_name.value }}",
+            "link": ""
+          }
+        },
+        "column_iTW8KR": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_zU94Ad": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_label": "",
             "link": ""
           }
         }
       },
       "block_order": [
-        "column_dWX398"
+        "column_dWX398",
+        "column_iTW8KR",
+        "column_zU94Ad"
       ],
       "settings": {
         "title": "Multicolumn",
