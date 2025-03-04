@@ -49,6 +49,7 @@
         "buttons_kyJjkQ"
       ],
       "settings": {
+        "image": "{{ metaobjects.ambassador_.louise.hero_image.value }}",
         "image_overlay_opacity": 0,
         "image_height": "medium",
         "desktop_content_position": "middle-center",
