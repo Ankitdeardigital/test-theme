@@ -19,9 +19,8 @@
       "blocks": {
         "heading_qRDnwU": {
           "type": "heading",
-          "source": "{{ metaobjects.ambassador_.louise }}",
           "settings": {
-            "heading": "{{ metaobjects.ambassador_.louise.email.value }}",
+            "heading": "vsfdgfsdgsd",
             "heading_size": "h1"
           }
         },
