@@ -356,5 +356,15 @@
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
   {% render 'hulkappsWishlistPopup' %}
+    <style>
+@media (min-width: 1025px){
+.hidden-background .page-main {
+    background-color: #1f1f21 !important;
+}
+}
+.hidden-background .page-main {
+    background-color: #1f1f21 !important;
+}
+</style>
 </body>
 </html>
