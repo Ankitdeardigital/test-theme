@@ -80,7 +80,7 @@
           "settings": {
             "heading": "nutrition info",
             "icon": "none",
-            "content": "<p>{{ product.metafields.custom.nutri_values | metafield_tag }}</p>",
+            "content": "<p>{{ product.metafields.custom.nutri_values | metafield_tag }}{{ product.metafields.custom.test.value }}</p>",
             "page": ""
           }
         }
