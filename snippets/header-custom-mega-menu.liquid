@@ -1,0 +1,43 @@
+<div class="mega-wrap">
+    {%- liquid
+      case link.links.size
+        when 1
+          assign mega_nav_size = 'mega-one'
+        when 2
+          assign mega_nav_size = 'mega-two'
+        else
+          assign mega_nav_size = 'mega-three'
+      endcase
+      if mega_image == blank
+        assign grid_nav = 'equal-grid'
+      endif
+    -%}
+    {%- if mega_image != blank -%}
+      <div class="mega__item mega-right">
+        {%- if mega_image_url != blank -%}
+          <a
+            href="{{ mega_image_url }}"
+            class="mega-image"
+          >
+        {%- else -%}
+          <div class="mega-image">
+        {%- endif -%}
+        {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+        {%- capture sizes -%}
+          (min-width: 990px) calc((100vw - 96px * 2 - 40px) / 2),
+          (min-width: 750px) calc((100vw - 130px) / 2),          
+          calc(100vw - 32px)                                     
+        {%- endcapture -%}
+        {{
+          mega_image
+          | image_url: width: 1500
+          | image_tag: sizes: sizes, widths: widths, fetchpriority: 'auto', loading: 'lazy'
+        }}
+        {%- if mega_image_url != blank -%}
+          </a>
+        {%- else -%}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>

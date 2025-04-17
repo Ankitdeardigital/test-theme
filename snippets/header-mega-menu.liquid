@@ -8,6 +8,24 @@
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
+      {%- liquid
+        assign link_handle = link.title | handleize
+        assign custom_megamenu = false
+        assign mega_image = ''
+        assign mega_image_url = ''
+        for block in section.blocks
+          if block.type == 'megamenu'
+            assign block_title = block.settings.title | handleize
+            if link_handle == block_title
+              assign custom_megamenu = true
+              if block.settings.image != blank
+                assign mega_image = block.settings.image
+                assign mega_image_url = block.settings.image_url                
+              endif
+            endif
+          endif
+        endfor
+      -%}
       <li>
         {%- if link.links != blank -%}
           <header-menu>
@@ -67,6 +85,11 @@
                     </li>
                   {%- endfor -%}
                 </ul>
+                {%- if custom_megamenu -%}
+                  <div class="mega-page-width ">
+                    {%- render 'header-custom-mega-menu', link:link, section:section, mega_image:mega_image, mega_image_url:mega_image_url, border_color:border_color -%}
+                  </div>
+                {%- endif -%}
               </div>
             </details>
           </header-menu>
