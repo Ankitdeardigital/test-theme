@@ -1,0 +1,85 @@
+{% liquid 
+    assign physical_total_price = 0
+    assign shipping_country_list = shop.metaobjects.shipping_bar_different_price_based_on_country.values
+    for item in cart.items
+    unless item.product.tags contains 'Gift Card'
+        assign physical_total_price = physical_total_price | plus: item.final_line_price
+    endunless
+    endfor
+
+    for shipping_bar_different_price_based_on_country in shipping_country_list
+        assign country_iso_code = shipping_bar_different_price_based_on_country.country_iso_code | upcase
+        assign country_price = shipping_bar_different_price_based_on_country.free_shipping_price
+        if country_iso_code != blank and country_price != blank
+            if localization.country.iso_code == country_iso_code
+                assign free_ship_money = country_price | times: 100
+            endif
+        endif
+    endfor
+
+    if free_ship_money != blank
+    assign percentage = physical_total_price | times: 100 | divided_by: free_ship_money
+    assign remaining_amount = free_ship_money | minus: physical_total_price
+    endif
+%}   
+{%- capture shipping_text -%}
+    {% if free_ship_money %}
+        {%- if settings.shipping_bar == '1' -%}
+            <div
+                class="free-shipping-text"
+                {% if physical_total_price == 0 %}
+                style="display:none;"
+                {% endif %}
+            >
+            {% if physical_total_price >= free_ship_money %}
+                <span class="free-shipping-text">{{ settings.free_shipping_yes }}</span>
+            {% else %}
+                <span class="free-shipping-text">
+                    {%- liquid
+                    assign remaining_amount = remaining_amount | money_without_trailing_zeros
+                    assign open_tag = '<highlight>'
+                    assign close_tag = '</highlight>'
+                    assign remaining_amount = remaining_amount | prepend: open_tag | append: close_tag
+                    -%}
+                    {{ settings.free_shipping_no | replace: '#x', remaining_amount }}
+                </span>
+            {% endif %}
+            </div>
+        {%- endif -%}
+    {% endif %}
+{%- endcapture -%}
+{{ shipping_text }}
+{% if free_ship_money %}
+    {%- if settings.shipping_bar == '1' -%}
+        <div
+            class="progress-wrapper"
+            {% if physical_total_price == 0 %}
+            style="display:none;"
+            {% endif %}
+        >
+            <span class="progess-bar"></span>
+        </div>
+        <style>
+            .progress-wrapper{
+                background-color: {{settings.shipbar_background}};
+            }
+            .progress-wrapper .progess-bar{
+                background-color: {{settings.filled_shipbar_background}};
+            }
+            {% if physical_total_price >= free_ship_money %}
+                
+            span.progess-bar {
+                width: 100%;                
+            }
+            {% elsif physical_total_price > 0 %}
+            .progess-bar {
+                width:{{ percentage }}%;
+            }
+            {% else %}
+            .progess-bar {
+                width: 0%;
+            }
+            {% endif %}
+        </style>
+    {%- endif -%}
+{% endif %}

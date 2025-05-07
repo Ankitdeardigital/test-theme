@@ -403,3 +403,23 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
     margin-left: 0;
   }
 }
+/* free shipping progress bar */
+.progress-wrapper{
+  width: 100%;
+  position: relative;
+  border-radius: 10px;
+  min-height: 12px;
+  margin: 16px 0 24px;
+}
+.progess-bar{
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 10px;
+}
+.free-shipping-text{
+  font-size: 12px;
+}

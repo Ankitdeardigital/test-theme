@@ -1463,6 +1463,51 @@
         "id": "cart_color_scheme",
         "label": "t:sections.all.colors.label",
         "default": "scheme-1"
+      },
+      {
+        "type": "header",
+        "content": "Shipping Progress Bar"
+      },
+      {
+        "type": "select",
+        "id": "shipping_bar",
+        "options": [
+          {
+            "value": "1",
+            "label": "ON"
+          },
+          {
+            "value": "0",
+            "label": "OFF"
+          }
+        ],
+        "default": "1",
+        "label": "Free Shipping Bar"
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_no",
+        "label": "Free Shipping From Text",
+        "default": "Add #x to enjoy free shipping",
+        "info": "Use #x to represent the remaining free shipping amount"
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_yes",
+        "label": "Free Shipping Applied Text",
+        "default": "Free shipping"
+      },
+      {
+        "type": "color",
+        "id": "shipbar_background",
+        "label": "Empty shipping bar background",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "filled_shipbar_background",
+        "label": "Filled shipping bar background",
+        "default": "#735AA2"
       }
     ]
   }

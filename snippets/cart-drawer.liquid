@@ -70,6 +70,9 @@
           {% render 'icon-close' %}
         </button>
       </div>
+      {%- if settings.shipping_bar -%}
+        {%- render 'free-shipping-progress-bar', cart: cart -%}
+        {%- endif -%}
       <cart-drawer-items
         {% if cart == empty %}
           class=" is-empty"
