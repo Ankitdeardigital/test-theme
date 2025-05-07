@@ -1271,5 +1271,50 @@ class ProductRecommendations extends HTMLElement {
     new IntersectionObserver(handleIntersection.bind(this), { rootMargin: '0px 0px 400px 0px' }).observe(this);
   }
 }
+//  variant change
+if (!customElements.get('card-swatches')) {
+  customElements.define(
+    'card-swatches',
+    class CardSwatches extends HTMLElement {
+      constructor() {
+        super();
+        this.init();
+      }
 
-customElements.define('product-recommendations', ProductRecommendations);
+      init() {
+        this.addEventListener('click', (event) => {
+          const swatch = event.target.closest('[data-swatch]');
+          if (!swatch) return;
+
+          const dataProduct = swatch.closest('[data-product]');
+          if (!dataProduct) return;
+
+          const firstImage = dataProduct.querySelector('[data-firstimage]');
+          if (!firstImage) return;
+
+          const allUrls = dataProduct.querySelectorAll('[data-link]');
+          if (!allUrls) return;
+          
+          const newSrcset = swatch.getAttribute('data-srcset');
+          const newSrc = swatch.getAttribute('data-image');
+          const newHref = swatch.getAttribute('data-href');
+          console.log(allUrls,newHref)
+          if (newSrcset) {
+            firstImage.setAttribute('srcset', newSrcset);
+          }
+          if (newSrc) {
+            firstImage.setAttribute('src', newSrc);
+          }
+          if (newHref) {
+            allUrls.forEach(url => {
+              url.setAttribute('href', newHref);
+            });
+          }
+          // Remove active class from all swatches and add to the clicked one
+          dataProduct.querySelectorAll('[data-swatch]').forEach(s => s.classList.remove('active'));
+          swatch.classList.add('active');
+        });
+      }
+    }
+  );
+}

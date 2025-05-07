@@ -1,0 +1,170 @@
+{% schema %}
+{
+  "name": "Marquee Images",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Our Partners"
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "s",
+      "label": "Scroll Speed",
+      "default": 30
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (Optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee Images",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.marquee-wrapper {
+  padding: 2rem 0;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.marquee-title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.marquee {
+  display: flex;
+  width: fit-content;
+  animation: scroll var(--scroll-speed) linear infinite;
+  gap: 2rem;
+}
+
+.marquee-content {
+  display: flex;
+  gap: 2rem;
+}
+
+.marquee-item {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.marquee-item:hover {
+  transform: scale(1.05);
+}
+
+.marquee-image {
+  height: 100px;
+  width: auto;
+  object-fit: contain;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    animation-play-state: paused;
+  }
+}
+</style>
+
+{% if section.blocks.size > 0 %}
+  <div class="page-width">
+    {% if section.settings.title != blank %}
+      <h2 class="marquee-title h1">{{ section.settings.title }}</h2>
+    {% endif %}
+  </div>
+
+  <div class="marquee-wrapper" style="--scroll-speed: {{ section.settings.scroll_speed }}s;">
+    <div class="marquee">
+      <div class="marquee-content">
+        {% for block in section.blocks %}
+          {% if block.settings.image %}
+            <div class="marquee-item" {{ block.shopify_attributes }}>
+              {% if block.settings.link != blank %}
+                <a href="{{ block.settings.link }}">
+              {% endif %}
+                
+              {{ block.settings.image | image_url: width: 200 | image_tag: 
+                class: 'marquee-image',
+                loading: 'lazy',
+                alt: block.settings.image.alt | escape
+              }}
+
+              {% if block.settings.link != blank %}
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      
+      <!-- Duplicate content for seamless loop -->
+      <div class="marquee-content">
+        {% for block in section.blocks %}
+          {% if block.settings.image %}
+            <div class="marquee-item">
+              {% if block.settings.link != blank %}
+                <a href="{{ block.settings.link }}">
+              {% endif %}
+                
+              {{ block.settings.image | image_url: width: 200 | image_tag: 
+                class: 'marquee-image',
+                loading: 'lazy',
+                alt: block.settings.image.alt | escape
+              }}
+
+              {% if block.settings.link != blank %}
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endif %} 

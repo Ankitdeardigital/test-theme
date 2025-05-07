@@ -1,0 +1,113 @@
+{% comment %} {%- if settings.enable_swatches -%}
+    {%- unless card_product.has_only_default_variant -%}
+      <card-swatches class="card-product-swatch">
+        {%- for option in card_product.options_with_values -%}
+          {%- liquid
+            assign swatch_count = option.values | map: 'swatch' | compact | size
+            assign assign product_form_id = 'product-form-' | append: section.id
+          -%}
+          {%- if swatch_count > 0 -%}
+            {%- for value in option.values -%}
+              {%- liquid
+                assign swatch = value.swatch
+                assign swatch_value = null
+                if swatch.image
+                  assign image_url = swatch.image | image_url: width: 50
+                  assign swatch_value = 'url(' | append: image_url | append: ')'
+                elsif swatch.color
+                  assign swatch_value = 'rgb(' | append: swatch.color.rgb | append: ')'
+                endif
+                assign variant_image = ''
+                assign variant_url = ''
+                for variant in card_product.variants
+                  assign variant_title = variant.title | handle
+                  assign value_handle = value | handle
+                  if variant_title contains value_handle
+                    assign variant_image = variant.image
+                    assign variant_url = variant.url
+                  endif
+                endfor
+              -%}
+              <button
+                data-href="{{ variant_url }}"
+                class="custom-card-swatch{% if variant_image == card_product.featured_media %} active{% endif %}"
+                {% if variant_image %}
+                  data-srcset="
+                    {%- if variant_image.width >= 165 -%}{{ variant_image | image_url: width: 165 }} 165w,{%- endif -%}
+                    {%- if variant_image.width >= 360 -%}{{ variant_image | image_url: width: 360 }} 360w,{%- endif -%}
+                    {%- if variant_image.width >= 533 -%}{{ variant_image | image_url: width: 533 }} 533w,{%- endif -%}
+                    {%- if variant_image.width >= 720 -%}{{ variant_image | image_url: width: 720 }} 720w,{%- endif -%}
+                    {%- if variant_image.width >= 940 -%}{{ variant_image | image_url: width: 940 }} 940w,{%- endif -%}
+                    {%- if variant_image.width >= 1066 -%}{{ variant_image | image_url: width: 1066 }} 1066w,{%- endif -%}
+                    {{ variant_image | image_url }} {{ variant_image.width }}w
+                  "
+                  data-image="{{ variant_image | image_url: width: 533 }}"
+                {% endif %}
+                data-swatch
+              >
+                <span style="background:{{ swatch_value }}"></span>
+              </button>
+            {%- endfor -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </card-swatches>
+    {%- endunless -%}
+  {%- endif -%} {% endcomment %}
+  
+
+  {%- if settings.enable_swatches -%}
+    {%- unless card_product.has_only_default_variant -%}
+      <card-swatches class="card-product-swatch">
+        {%- for option in card_product.options_with_values -%}
+          {%- liquid
+            assign swatch_count = option.values | map: 'swatch' | compact | size
+            assign assign product_form_id = 'product-form-' | append: section.id
+          -%}
+          {%- if swatch_count > 0 -%}
+            {%- for value in option.values -%}
+              {%- liquid
+                assign swatch = value.swatch
+                assign swatch_value = null
+                if swatch.image
+                  assign image_url = swatch.image | image_url: width: 50
+                  assign swatch_value = 'url(' | append: image_url | append: ')'
+                elsif swatch.color
+                  assign swatch_value = 'rgb(' | append: swatch.color.rgb | append: ')'
+                endif
+                assign variant_image = ''
+                assign variant_url = ''
+                for variant in card_product.variants
+                  assign variant_title = variant.title | handle
+                  assign value_handle = value | handle
+                  if variant_title contains value_handle
+                    assign variant_image = variant.image
+                    assign variant_url = variant.url
+                  endif
+                endfor
+              -%}
+              <button
+                data-href="{{ variant_url }}"
+                class="custom-card-swatch{% if variant_image == card_product.featured_media %} active{% endif %}"
+                {% if variant_image %}
+                  data-srcset="
+                    {%- if variant_image.width >= 165 -%}{{ variant_image | image_url: width: 165 }} 165w,{%- endif -%}
+                    {%- if variant_image.width >= 360 -%}{{ variant_image | image_url: width: 360 }} 360w,{%- endif -%}
+                    {%- if variant_image.width >= 533 -%}{{ variant_image | image_url: width: 533 }} 533w,{%- endif -%}
+                    {%- if variant_image.width >= 720 -%}{{ variant_image | image_url: width: 720 }} 720w,{%- endif -%}
+                    {%- if variant_image.width >= 940 -%}{{ variant_image | image_url: width: 940 }} 940w,{%- endif -%}
+                    {%- if variant_image.width >= 1066 -%}{{ variant_image | image_url: width: 1066 }} 1066w,{%- endif -%}
+                    {{ variant_image | image_url }} {{ variant_image.width }}w
+                  "
+                  data-image="{{ variant_image | image_url: width: 533 }}"
+                {% endif %}
+                data-swatch
+              >
+                <span style="background:{{ swatch_value }}"></span>
+              </button>
+            {%- endfor -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </card-swatches>
+    {%- endunless -%}
+  {%- endif -%}
+ 
